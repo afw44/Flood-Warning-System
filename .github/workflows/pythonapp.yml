@@ -28,21 +28,11 @@ jobs:
       - name: Run unit tests using pytest
         run: pytest -v
 
-      - name: Run Deliverable 1 code
-        run: |
-          python Task1A.py
-          python Task1B.py
-          python Task1C.py
-          python Task1D.py
-          python Task1E.py
-          python Task1F.py
+
 
       - name: Run Deliverable 2 code
         run: |
-          python Task2A.py
-          python Task2B.py
-          python Task2C.py
-          python Task2D.py
-          python Task2E.py
-          python Task2F.py
-          python Task2G.py
+          python TaskA.py
+          python TaskB.py
+          python TaskC.py
+          python TaskD.py
