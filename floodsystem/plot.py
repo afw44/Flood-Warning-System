@@ -2,9 +2,33 @@
 import pprint
 import numpy as np
 import matplotlib.pyplot as plt
-from .utils import polyfit
-from datetime import datetime
+from .utils import polyfit, station_namelookup
+from .datafetcher import fetch_measure_levels
+from .stationdata import build_station_list
 import geopandas
+import datetime
+
+def plot_list_of_stations(stations):
+    for index,name in enumerate(stations):
+
+            station = station_namelookup(build_station_list(use_cache = True),name)
+
+            dates, levels = fetch_measure_levels(
+                    station.measure_id, dt=datetime.timedelta(days = 5))
+            """Fetches dates and levels for the station in a given timeperiod."""
+
+            if len(dates) > 0:
+                    plt.subplot(2, 3, index+1)
+                    print(f"Plotting {station.name}")
+                    plot_water_level_with_fit(station, dates, levels,10)
+            else:
+                    
+                    print(f'Bad data for {station.name}')
+
+
+    print("PLOTS COMPLETE")
+    plt.subplots_adjust(wspace=None, hspace=None)
+    plt.show()
 
 
 def plot_water_levels(station, dates, levels):
@@ -81,7 +105,7 @@ def plot_water_level_with_fit(station, dates, levels, p):
 
     """Performs the polynomial fitting with the smaller dates - afw44"""
 
-    dates = [datetime.fromtimestamp(date) 
+    dates = [datetime.datetime.fromtimestamp(date) 
              for date in (np.array([dates]) + np.ones(len(dates))*offset)[0]]
     
     """Returns dates to original values, and converts back to datetime - afw44"""

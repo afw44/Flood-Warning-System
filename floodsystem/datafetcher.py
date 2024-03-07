@@ -10,7 +10,6 @@ latest time history level data
 
 """
 
-
 def fetch(url):
     """Fetch data from url and return fetched JSON object"""
     r = requests.get(url)

@@ -19,8 +19,6 @@ def station_distance(station, p):
     return np.round(d,3)
 
 
-
-
 def stations_by_distance(stations, p):
     """Reads in a list of MonitoringStation objects and a coordinate, 
 

@@ -1,7 +1,5 @@
 from floodsystem.plot import mapplot
 from floodsystem.utils import risktypedict_from_cache, riskleveldict_from_cache
-from floodsystem.flood import update_risk_caches
-from floodsystem.stationdata import build_station_list
 import matplotlib.pyplot as plt
 import numpy as np
 
