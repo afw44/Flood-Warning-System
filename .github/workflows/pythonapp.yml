@@ -34,5 +34,3 @@ jobs:
         run: |
           python TaskA.py
           python TaskB.py
-          python TaskC.py
-          python TaskD.py
