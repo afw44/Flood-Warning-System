@@ -1,26 +1,23 @@
-from floodsystem.stationdata import build_station_list, update_water_levels
+from floodsystem.plot import plot_list_of_stations
+from floodsystem.stationdata import build_station_list,update_water_levels
+from floodsystem.flood import stations_highest_rel_level
+import datetime
+import pprint
+import matplotlib.pyplot as plt
 
 
 def run():
-    # Build list of stations
-    stations = build_station_list()
+        stations = build_station_list()
+        update_water_levels(stations)
 
-    # Update latest level data for all stations
-    update_water_levels(stations)
+        highest_stations = [tuple[0] for tuple in stations_highest_rel_level(stations,6)]
+        """Returns names for highest 6 relative level stations - afw44"""
 
-    # Print station and latest level for first 5 stations in list
-    names = [
-        'Bourton Dickler', 'Surfleet Sluice', 'Gaw Bridge', 'Hemingford',
-        'Swindon'
-    ]
-
-    for station in stations:
-        if station.name in names:
-            print("Station name and current level: {}, {}".format(
-                station.name, station.latest_level))
+        plot_list_of_stations(highest_stations)
+        """Plots above stations - afw44 """
 
 if __name__ == "__main__":
-    print("*** Task 2A: CUED Part IA Flood Warning System ***")
+    print("*** Task A: CUED Part IA Flood Warning System ***")
     run()
 
-    
+

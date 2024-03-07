@@ -1,22 +1,26 @@
-import datetime
-from floodsystem.datafetcher import fetch_measure_levels
-from floodsystem.stationdata import build_station_list
-from floodsystem.utils import station_namelookup
+from floodsystem.plot import mapplot
+from floodsystem.utils import risktypedict_from_cache, riskleveldict_from_cache
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 def run():
 
-    station = station_namelookup(build_station_list(),'Whaddon')
+    #update_risk_caches(build_station_list())
 
-    # Fetch data over past 2 days
-    dates, levels = fetch_measure_levels(
-        station.measure_id, dt=datetime.timedelta(days=2))
+    townrisk_floats = np.genfromtxt('risk_cache_floats.txt',delimiter=',')
 
-    # Print level history
-    for date, level in zip(dates, levels):
-        print(date, level)
+    mapplot(townrisk_floats)
+
+    plt.title('England Station Risks')
+
+    risktype_dictionary = risktypedict_from_cache()
+    risklevel_dictionary = riskleveldict_from_cache()
+
+    plt.show()
 
 
 if __name__ == "__main__":
-    print("*** Task 2D: CUED Part IA Flood Warning System ***")
+    print("*** Task B: CUED Part IA Flood Warning System ***")
     run()
 
