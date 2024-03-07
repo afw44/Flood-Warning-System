@@ -58,40 +58,40 @@ def test_stations_within_radius():
                    MonitoringStation(s_id, m_id, label, (50,60), trange, river, town)]
     
 
-    # Defines arbitrary parameters for testing stations - bhyw2
+    # Defines arbitrary parameters for testing stations - afw44
     
     s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
     
-    # Displays the arbitrary parameters in the same format as the dataset - bhyw2
+    # Displays the arbitrary parameters in the same format as the dataset - afw44
     
     test_stations=[MonitoringStation(s_id, m_id, label,(1,1.0001), trange, river, town),
                    MonitoringStation(s_id, m_id, label, (30,40), trange, river, town),
                    MonitoringStation(s_id, m_id, label, (50,60), trange, river, town)]
     
-    # Data set with 3 stations is created - bhyw2
+    # Data set with 3 stations is created - afw44
     
     a = stations_within_radius(test_stations,1,(1,1))
     
     assert len(a)==1
     
-    # Only one of the stations is within 1m of (1,1), so it should be the list should only have one item - bhyw2
+    # Only one of the stations is within 1m of (1,1), so it should be the list should only have one item - afw44
 
 
 
 
 def test_rivers_with_station():
 
-    # Defines arbitrary parameters for testing stations - bhyw2
+    # Defines arbitrary parameters for testing stations - afw44
     
     s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
     
-    # Displays the arbitrary parameters in the same format as the dataset - bhyw2
+    # Displays the arbitrary parameters in the same format as the dataset - afw44
     
     test_stations=[MonitoringStation(s_id, m_id, label, coord, trange, "A", town),
                    MonitoringStation(s_id, m_id, label, coord, trange, "B", town),
                    MonitoringStation(s_id, m_id, label, coord, trange, "A", town)]
     
-    # Data set with 3 stations is created. Two are on river A and one is on river B - bhyw2
+    # Data set with 3 stations is created. Two are on river A and one is on river B - afw44
     
     b = rivers_with_station(test_stations)
     
@@ -101,11 +101,11 @@ def test_rivers_with_station():
 
 
 def test_stations_by_river():  
-    # Defines arbitrary parameters for testing stations - bhyw2
+    # Defines arbitrary parameters for testing stations - afw44
     
     s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)
     
-    # Displays the arbitrary parameters in the same format as the dataset - bhyw2
+    # Displays the arbitrary parameters in the same format as the dataset - afw44
     
     test_stations=[MonitoringStation(s_id, m_id, "Gamma", coord, trange, "A", town),
                    MonitoringStation(s_id, m_id, "Delta", coord, trange, "B", town),
@@ -113,15 +113,15 @@ def test_stations_by_river():
                    MonitoringStation(s_id, m_id, "Epsilon", coord, trange, "A", town),
                    MonitoringStation(s_id, m_id, "Beta", coord, trange, "B", town)] 
     
-    # Data set with 5 stations is created, with stations Alpha, Gamma and Epsilon along river A and stations Beta and Delta along river B. - bhyw2
+    # Data set with 5 stations is created, with stations Alpha, Gamma and Epsilon along river A and stations Beta and Delta along river B. - afw44
     
     c = stations_by_river(test_stations)
 
-    # Dictionary with each river and the corresponding stations is created - bhyw2
+    # Dictionary with each river and the corresponding stations is created - afw44
 
     assert c["A"] == ['Alpha', 'Epsilon', 'Gamma']
 
-    # This finds all stations on river A, which should be Alpha, Epsilon and Gamma (in alphabetical order) - bhyw2
+    # This finds all stations on river A, which should be Alpha, Epsilon and Gamma (in alphabetical order) - afw44
     assert c["B"] == ['Beta', 'Delta']
 
-    # This finds all stations on river B, which should be Beta and Delta (in alphabetical order) - bhyw2
+    # This finds all stations on river B, which should be Beta and Delta (in alphabetical order) - afw44
