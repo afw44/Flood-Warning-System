@@ -1,4 +1,4 @@
-from .. import datafetcher
+from . import datafetcher
 from .station import MonitoringStation
 
 
